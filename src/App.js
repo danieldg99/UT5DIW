@@ -3,12 +3,21 @@ import Tabla from './Tabla';
 import TablaComp from './TablaComp';
 import TablaProps from './TablaProps';
 import TablaState from './TablaState';
+import personajes from './personajes.json';
+import Formulario from './Formulario';
 
 class App extends Component{
-    state = {
-        personajes:[
-            { name: 'Payton Hobart', }, { name: 'Wendy Carr', }, { name: 'Mina', }, { name: 'Jonathan Harker', }, { name: 'Drácula', }, { name: 'Once', }, { name: 'Jim Hopper', }
-        ]
+    state = {personajes};
+    // state = {
+    //     personajes:[
+    //         { name: 'Payton Hobart', }, { name: 'Wendy Carr', }, { name: 'Mina', }, { name: 'Jonathan Harker', }, { name: 'Drácula', }, { name: 'Once', }, { name: 'Jim Hopper', }
+    //     ]
+    // }
+
+    manejarEnvio = personaje => { 
+        this.setState({
+            personajes: [...this.state.personajes, personaje]
+        })
     }
 
     borrarPersonaje = indice => {
@@ -33,6 +42,8 @@ class App extends Component{
                 <TablaComp />
                 <h2>Tabla creada mediante un componente de clase que utiliza paso de parametros con props</h2>
                 <TablaProps dActores = {actores}/>
+                <h2>Añadir nuevo personaje</h2> 
+                <Formulario manejarEnvio = {this.manejarEnvio} />
                 <h2>Tabla creada mediante un componente de clase que utiliza paso de parametros con State</h2>
                 <TablaState dPersonajes = {personajes} bPersonaje = {this.borrarPersonaje}/>
             </div>
