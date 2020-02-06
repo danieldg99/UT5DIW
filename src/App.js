@@ -5,6 +5,7 @@ import TablaProps from './TablaProps';
 import TablaState from './TablaState';
 import personajes from './personajes.json';
 import Formulario from './Formulario';
+import Api from './Api';
 
 class App extends Component{
     state = {personajes};
@@ -46,7 +47,11 @@ class App extends Component{
                 <Formulario manejarEnvio = {this.manejarEnvio} />
                 <h2>Tabla creada mediante un componente de clase que utiliza paso de parametros con State</h2>
                 <TablaState dPersonajes = {personajes} bPersonaje = {this.borrarPersonaje}/>
-            </div>
+                <br/><br/>
+                <h2>Datos de la API de Andreas Reiterer</h2>
+                <h3>Lista de contactos:</h3>
+                <Api />
+                </div>
         )
     }
 }
